@@ -28,11 +28,11 @@ jobs:
     # <<: *job_js
     steps:
       - run:
-          name: JS lint
-          command: yarn js-lint
-      - run:
           name: Install yarn dependencies
           command: yarn install
+      - run:
+          name: JS lint
+          command: yarn js-lint
 
 workflows:
   version: 2
