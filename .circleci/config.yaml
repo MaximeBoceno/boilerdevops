@@ -10,12 +10,12 @@ jobs:
       - run:
           name: Install yarn dependencies
           command: yarn install
-      - save_cache:
-        name: Save yarn node modules
-        key: yarn-v1-{{ checksum "yarn.lock" }}
-        paths:
-          - node_modules
-          - ~/.cache/yarn
+      # - save_cache:
+      #   name: Save yarn node modules
+      #   key: yarn-v1-{{ checksum "yarn.lock" }}
+      #   paths:
+      #     - node_modules
+      #     - ~/.cache/yarn
       - run:
           name: JS lint
           command: yarn js-lint
