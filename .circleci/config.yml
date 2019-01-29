@@ -1,22 +1,39 @@
 version: 2
+references:
+  # Project
+  jslint: &jslint
+    run:
+      name: JS lint
+      command: yarn js-lint
+
+  # Jobs
+  job_js: &job_js
+    steps:
+        - checkout:
+            path: ~/project
+        - *jslint
+        - run: echo "all js jobs"
+
 jobs:
-  one:
+  # front
+  front_js:
     docker:
-      - image: circleci/ruby:2.4.1
-    steps:
-      - checkout
-      - run: echo "A first hello"
-      - run: sleep 25
-  two:
-    docker:
-      - image: circleci/ruby:2.4.1
-    steps:
-      - checkout
-      - run: echo "A more familiar hi"
-      - run: sleep 15
+      - image: node:8.9
+    working_directory: ~/project/src
+    <<: *job_js
+
 workflows:
   version: 2
-  one_and_two:
+  # Commit CI
+  test:
     jobs:
-      - one
-      - two
+      # Step 1: lint tests
+      - front_js
+  
+  
+  # deploy:
+  #   jobs:
+  #     - front_js:
+  #         filters:
+  #           branches:
+  #             only: master
