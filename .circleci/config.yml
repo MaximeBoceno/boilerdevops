@@ -5,7 +5,7 @@ jobs:
   front_js:
     docker:
       - image: node:8.9
-    working_directory: ~/
+    working_directory: ~/testapp
     steps:
       - run:
           name: Install yarn dependencies
