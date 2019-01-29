@@ -10,17 +10,11 @@ jobs:
       - run:
           name: Install yarn dependencies
           command: yarn install
+      - run: ls -l ~/project
       - run:
           name: JS lint
           command: yarn js-lint
-    
-    # steps:
-    #   - run:
-    #       name: Install yarn dependencies
-    #       command: yarn install
-    #   - run:
-    #       name: JS lint
-    #       command: yarn js-lint
+
 
 workflows:
   version: 2
