@@ -31,7 +31,6 @@ references:
         - checkout:
             path: ~/project
               - *jslint
-        - run: echo "all js jobs"
 
 jobs:
   # front
