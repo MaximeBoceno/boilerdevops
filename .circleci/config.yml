@@ -13,10 +13,9 @@ jobs:
       - run:
           name: Install npm dependencies
           command: npm install
-      - run: ls -l
       - run:
           name: JS lint
-          command: npm js-lint
+          command: yarn js-lint
 
 
 workflows:
