@@ -9,14 +9,14 @@ jobs:
       - checkout 
       - run:
           name: Install node
-          command: yarn install node
+          command: npm install node
       - run:
-          name: Install yarn dependencies
-          command: yarn install
+          name: Install npm dependencies
+          command: npm install
       - run: ls -l
       - run:
           name: JS lint
-          command: yarn js-lint
+          command: npm js-lint
 
 
 workflows:
