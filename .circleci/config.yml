@@ -10,35 +10,21 @@ references:
     run:
       name: Install yarn dependencies
       command: yarn install
-  
-  # yarn_save: &yarn_save
-  #   save_cache:
-  #     name: Save yarn node modules
-  #     key: yarn-v1-{{ checksum "yarn.lock" }}
-  #     paths:
-  #       - node_modules
-  #       - ~/.cache/yarn
-  
-  # yarn_restore: &yarn_restore
-  #   restore_cache:
-  #     name: Restore yarn node modules
-  #     keys:
-  #       - yarn-v1-{{ checksum "yarn.lock" }}
 
   # Jobs
   job_js: &job_js
     steps:
-        - checkout:
-            path: ~/project/src
-              - *yarn_install
-              - *jslint
+      - checkout:
+          path: ~/project
+            - *yarn_install
+            - *jslint
 
 jobs:
   # front
   front_js:
     docker:
       - image: node:8.9
-    working_directory: ~/project
+    working_directory: ~/src
     <<: *job_js
 
 workflows:
@@ -49,10 +35,3 @@ workflows:
       # Step 1: lint tests
       - front_js
   
-  
-  deploy:
-    jobs:
-      - front_js:
-          filters:
-            branches:
-              only: master
