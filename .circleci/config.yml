@@ -24,8 +24,15 @@ jobs:
   front_js:
     docker:
       - image: node:8.9
-    # working_directory: ~/project/src
-    <<: *job_js
+    working_directory: ~/project/src
+    # <<: *job_js
+    steps:
+      - run:
+          name: JS lint
+          command: yarn js-lint
+      - run:
+          name: Install yarn dependencies
+          command: yarn install
 
 workflows:
   version: 2

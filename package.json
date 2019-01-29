@@ -12,7 +12,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    // "js-lint": "eslint src --max-warnings=0"
+    "js-lint": "eslint src --max-warnings=0"
   },
   "eslintConfig": {
     "extends": "react-app"
