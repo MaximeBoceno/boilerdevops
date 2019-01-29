@@ -1,0 +1,53 @@
+version: 2.1
+
+# Project
+jslint: &jslint
+  run:
+    name: JS lint
+    command: yarn js-lint
+
+yarn_install: &yarn_install
+  run:
+    name: Install yarn dependencies
+    command: yarn install
+
+yarn_save: &yarn_save
+  save_cache:
+    name: Save yarn node modules
+    key: yarn-v1-{{ checksum "yarn.lock" }}
+    paths:
+      - node_modules
+      - ~/.cache/yarn
+
+# Jobs
+job_js: &job_js
+  steps:
+    - checkout:
+        path: ~/project
+          - *yarn_install
+          - *yarn_save
+          - *jslint
+
+jobs:
+  # front
+  front_js:
+    docker:
+      - image: node:8.9
+    working_directory: ~/project
+    <<: *job_js
+    # steps:
+    #   - run:
+    #       name: Install yarn dependencies
+    #       command: yarn install
+    #   - run:
+    #       name: JS lint
+    #       command: yarn js-lint
+
+workflows:
+  version: 2
+  # Commit CI
+  test:
+    jobs:
+      # Step 1: lint tests
+      - front_js
+  
