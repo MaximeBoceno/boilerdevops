@@ -6,10 +6,10 @@ references:
       name: JS lint
       command: yarn js-lint
 
-  # yarn_install: &yarn_install
-  #   run:
-  #     name: Install yarn dependencies
-  #     command: yarn install
+  yarn_install: &yarn_install
+    run:
+      name: Install yarn dependencies
+      command: yarn install
   
   # yarn_save: &yarn_save
   #   save_cache:
@@ -30,6 +30,7 @@ references:
     steps:
         - checkout:
             path: ~/project
+              - *yarn_install
               - *jslint
 
 jobs:
