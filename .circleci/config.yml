@@ -10,7 +10,7 @@ jobs:
       - run:
           name: Install yarn dependencies
           command: yarn install
-      - run: ls -l ~/
+      - run: ls -l
       - run:
           name: JS lint
           command: yarn js-lint
