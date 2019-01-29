@@ -24,7 +24,7 @@ jobs:
   front_js:
     docker:
       - image: node:8.9
-    working_directory: ~/project/src
+    working_directory: ~/project
     # <<: *job_js
     steps:
       - run:
