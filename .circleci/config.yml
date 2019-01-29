@@ -5,12 +5,12 @@ jobs:
   front_js:
     docker:
       - image: node:8.9
-    working_directory: ~/project
+    working_directory: ~/
     steps:
       - run:
           name: Install yarn dependencies
           command: yarn install
-      - run: ls -l ~/project
+      - run: ls -l ~/
       - run:
           name: JS lint
           command: yarn js-lint
