@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 references:
   # Project
   jslint: &jslint
@@ -23,7 +23,7 @@ references:
   job_js: &job_js
     steps:
       - checkout:
-          path: ~/testapp
+          path: ~/project
             - *yarn_install
             - *yarn_save
             - *jslint
@@ -33,7 +33,7 @@ jobs:
   front_js:
     docker:
       - image: node:8.9
-    working_directory: ~/testapp
+    working_directory: ~/project
     <<: *job_js
     # steps:
     #   - run:
