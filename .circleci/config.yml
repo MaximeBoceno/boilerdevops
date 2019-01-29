@@ -24,7 +24,7 @@ jobs:
   front_js:
     docker:
       - image: node:8.9
-    working_directory: ~/src
+    working_directory: ./src
     <<: *job_js
 
 workflows:
