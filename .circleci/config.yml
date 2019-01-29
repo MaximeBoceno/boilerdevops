@@ -29,7 +29,7 @@ references:
   job_js: &job_js
     steps:
         - checkout:
-            path: ~/project
+            path: ~/project/src
               - *yarn_install
               - *jslint
 
@@ -38,7 +38,7 @@ jobs:
   front_js:
     docker:
       - image: node:8.9
-    working_directory: ~/project/src
+    working_directory: ~/project
     <<: *job_js
 
 workflows:
